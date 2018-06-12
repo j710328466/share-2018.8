@@ -1,24 +1,38 @@
 language: node_js
-node_js: stable
+# nodejs版本
+node_js: 
+    - '8.9.1'
+
+# Travis-CI Caching
+cache:
+  directories:
+    - node_modules
+
 
 # S: Build Lifecycle
 install:
   - npm install
 
+before_script:
+
+# 无其他依赖项所以执行npm run build 构建就行了
 script:
   - npm run test
 
 after_script:
+  - cd ./coverage
   - git init
-  - git config user.name "jiangzhixiong"
-  - git config user.email "710328466@qq.com"
+  - git config user.name "${USER_NAME}"
+  - git config user.email "${USER_EMAIL}"
   - git add .
   - git commit -m "test"
-  - git push --force --quiet "https://${test_token}@${GH_REF}" master:master
+  - git push --force --quiet "https://${test_token}@${GH_REF}" master:${P_BRANCH}
+# E: Build LifeCycle
 
 branches:
   only:
     - master
 env:
  global:
+   # 我将其添加到了travis-ci的环境变量中
    - GH_REF: github.com/j710328466/travis_demo.git
