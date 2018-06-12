@@ -20,7 +20,7 @@ script:
   - npm run test
 
 after_script:
-  - cd ./coverage
+  - cd ./coverage/lcov-report
   - git init
   - git config user.name "${USER_NAME}"
   - git config user.email "${USER_EMAIL}"
