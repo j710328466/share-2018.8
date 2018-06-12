@@ -1,0 +1,33 @@
+{
+  "name": "CI",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "async": "^2.6.1",
+    "cheerio": "^1.0.0-rc.2",
+    "eventproxy": "^1.0.0",
+    "express": "^4.16.3",
+    "should": "^13.2.1",
+    "superagent": "^3.8.3",
+    "utility": "^1.13.1"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5"
+  },
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "make cov test-cov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j710328466/travis_demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j710328466/travis_demo/issues"
+  },
+  "homepage": "https://github.com/j710328466/travis_demo#readme"
+}
