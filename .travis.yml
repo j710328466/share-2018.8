@@ -34,5 +34,5 @@ branches:
     - master
 env:
  global:
-   # 我将其添加到了travis-ci的环境变量中
-   - GH_REF: github.com/j710328466/travis_demo.git
+  # 我将其添加到了travis-ci的环境变量中
+  #  - GH_REF: github.com/j710328466/travis_demo.git
