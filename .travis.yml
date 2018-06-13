@@ -29,6 +29,9 @@ after_script:
   - git push --force --quiet "https://${test_token}@${GH_REF}" master:${P_BRANCH}
 # E: Build LifeCycle
 
+notifications:
+  webhooks: https://oapi.dingtalk.com/robot/send?access_token=${access_token}
+
 branches:
   only:
     - master
