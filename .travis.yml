@@ -30,7 +30,7 @@ after_script:
 # E: Build LifeCycle
 
 notifications:
-  webhooks: https://oapi.dingtalk.com/robot/send?access_token=${access_token}
+   webhooks: https://oapi.dingtalk.com/robot/send?access_token=${access_token}
 
 branches:
   only:
