@@ -35,6 +35,7 @@ notifications:
 branches:
   only:
     - master
+
 env:
  global:
   # 我将其添加到了travis-ci的环境变量中
