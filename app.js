@@ -11,6 +11,11 @@ const ep = eventproxy()
 const PORT = 3000
 const Cnode = 'https://cnodejs.org/'
 
+app.post('/', (req, res, next) => {
+  console.log(req)
+  res.send('ok')
+})
+
 app.use('/md5', (req, res, next) => {
   var val = req.query.q
   if (val) {
