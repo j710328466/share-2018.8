@@ -21,7 +21,7 @@ app.use('/md5', (req, res, next) => {
   if (val) {
     res.send(utility.md5(val))
   } else {
-    res.send('你可以在链接传个值看看啊,混蛋！（q=再次测试fetch）')
+    res.send('你可以在链接传个值看看啊,混蛋！（q=测试ci）')
   }
 })
 
