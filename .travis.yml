@@ -17,20 +17,20 @@ before_script:
 
 # 无其他依赖项所以执行npm run build 构建就行了
 script:
-  - npm run test
+  - npm run build
 
 after_script:
-  - cd ./coverage/lcov-report
+  - cd ./dist
   - git init
   - git config user.name "${USER_NAME}"
   - git config user.email "${USER_EMAIL}"
   - git add .
-  - git commit -m "test"
+  - git commit -m "自动构建页面"
   - git push --force --quiet "https://${test_token}@${GH_REF}" master:${P_BRANCH}
 # E: Build LifeCycle
 
 notifications:
-  #  webhooks: https://oapi.dingtalk.com/robot/send?access_token=9d6598dd72893735651b93578d74240c3528f77d37d49e4e3090f28c036e5ea6
+   webhooks: https://oapi.dingtalk.com/robot/send?access_token=9d6598dd72893735651b93578d74240c3528f77d37d49e4e3090f28c036e5ea6
 
 branches:
   only:
