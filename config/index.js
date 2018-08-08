@@ -50,7 +50,7 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: 'https://blog.jzxer.cn/share-2018.8/static/',
     assetsPublicPath: '/',
 
     /**
