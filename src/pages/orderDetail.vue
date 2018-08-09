@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import { getGoodList } from '../api/getData'
 export default {
   name: 'orderDetail',
   data () {
@@ -32,11 +31,6 @@ export default {
     }
   },
   mounted () {
-    getGoodList({
-      data: this.$route.params
-    }).then(res => {
-      this.goodDetail = res.data[0]
-    })
   },
   methods: {
   }

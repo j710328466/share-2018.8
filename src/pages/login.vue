@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { login, getGoodList } from '../api/getData'
+import { login } from '../api/getData'
 export default {
   name: 'me',
   data () {
@@ -85,16 +85,6 @@ export default {
     if (BBID) {
       this.dialog = false
     }
-    getGoodList({
-      data: {
-        state: 'sale',
-        user_id: BBNAME
-      }
-    }).then(res => {
-      if (String(res.status) === '200') {
-        this.tableData = res.data
-      }
-    })
   },
   methods: {
     login: function () {

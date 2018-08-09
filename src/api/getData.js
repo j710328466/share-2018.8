@@ -31,30 +31,6 @@ export function adminDelete (params) {
   })
 }
 
-// 商品类型新增
-export function addGoodType (params) {
-  return axios({
-    url: '/goodType/add',
-    data: params.data
-  })
-}
-
-// 商品类型列表
-export function goodTypeList (params) {
-  return axios({
-    url: '/goodType/sort',
-    data: params.data
-  })
-}
-
-// 商品类型删除
-export function goodTypeDelete (params) {
-  return axios({
-    url: '/goodType/delete',
-    data: params.data
-  })
-}
-
 // 登录
 export function login (params) {
   return axios({
@@ -98,46 +74,6 @@ export function userDetail (params) {
 export function addAddress (params) {
   return axios({
     url: '/users/addAddress',
-    data: params.data
-  })
-}
-
-// 商品发布
-export function publish (params) {
-  return axios({
-    url: '/good/publish',
-    data: params.data
-  })
-}
-
-// 获取商品列表
-export function getGoodList (params) {
-  return axios({
-    url: '/good/sort',
-    data: params.data
-  })
-}
-
-// 商品关键字查询
-export function keyWordSearch (params) {
-  return axios({
-    url: '/good/search',
-    data: params.data
-  })
-}
-
-// 商品购买
-export function buyGood (params) {
-  return axios({
-    url: '/good/buy',
-    data: params.data
-  })
-}
-
-// 商品删除
-export function orderDelete (params) {
-  return axios({
-    url: '/good/delete',
     data: params.data
   })
 }

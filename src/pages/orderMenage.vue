@@ -44,7 +44,6 @@
 </template>
 
 <script>
-import { getGoodList, orderDelete } from '../api/getData'
 export default {
   name: 'orderMenage',
   data () {
@@ -57,22 +56,8 @@ export default {
   },
   methods: {
     _getOrderList () {
-      getGoodList({}).then(res => {
-        if (res.data) {
-          this.orders = res.data
-        }
-      })
     },
     orderDel (val) {
-      orderDelete({
-        data: {
-          _id: val
-        }
-      }).then(res => {
-        if (res.data.ok) {
-          this._getOrderList()
-        }
-      })
     }
   }
 }

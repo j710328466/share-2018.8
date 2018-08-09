@@ -13,14 +13,6 @@ export default {
   },
   methods: {
     test: function () {
-      // this.axios({
-      //   url: 'http://localhost:8888/test',
-      //   data: {
-      //     name: 'aaa',
-      //     age: 11
-      //   },
-      //   method: 'POST'
-      // })
     }
   }
 }

@@ -96,7 +96,7 @@
 </template>
 
 <script>
-import { getGoodList, userDetail, addAddress, buyGood } from '../api/getData'
+import { userDetail, addAddress } from '../api/getData'
 export default {
   name: 'orderState',
   data () {
@@ -147,32 +147,6 @@ export default {
       this.activeStep--
     },
     next () {
-      if (this.activeStep === 1) {
-        buyGood({
-          data: {
-            _id: this.$route.params._id,
-            state: 'saled',
-            buyer: {
-              _id: localStorage.getItem('_BBID'),
-              tel: this.tel,
-              addr: this.addrSelect
-            }
-          }
-        }).then(res => {
-          if (res.data) {
-            this.topPopup = true
-            this.popText = '支付成功'
-            setTimeout(() => {
-              this.activeStep++
-            }, 1500)
-          } else {
-            this.topPopup = true
-            this.popText = '支付失败'
-          }
-        })
-      } else if (this.activeStep === 2 || this.activeStep === 0) {
-        this.activeStep++
-      }
     },
     addAddr () {
       this.isAddAddring = true

@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import { addGoodType, goodTypeList, goodTypeDelete } from '../api/getData'
 export default {
   name: 'goodMenage',
   data () {
@@ -56,35 +55,15 @@ export default {
   },
   methods: {
     _getGoodTypeList () {
-      goodTypeList({}).then(res => {
-        this.goodTypes = res.data
-      })
+
     },
     goodTypeDel (id, index) {
-      goodTypeDelete({
-        data: {
-          id,
-          index
-        }
-      }).then(res => {
-        console.log(res)
-        this._getGoodTypeList()
-      })
+
     },
     addGoodType () {
       this.showAddGoodType = true
     },
     submit () {
-      addGoodType({
-        data: {
-          createTime: this.moment().format('YYYY-MM-DD HH:MM:SS'),
-          hugeType: this.hugeType,
-          microType: this.microType
-        }
-      }).then(res => {
-        this.showAddGoodType = false
-        this._getGoodTypeList()
-      })
     },
     close () {
       this.showAddGoodType = false

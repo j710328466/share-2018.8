@@ -34,7 +34,6 @@
 
 <script>
 import ImgUploader from '../components/ImgUploader'
-import { publish } from '../api/getData'
 import OSS from '../../utils/aliOSS'
 export default {
   name: 'publish',
@@ -69,37 +68,6 @@ export default {
       })
     },
     submit () {
-      if (this.title === '' || this.desc === '' || this.pics === '' || this.price === '' ||
-          this.type === '') {
-        this.popDesc = '信息未填写完整'
-        this.topPopup = true
-        return
-      }
-      const obj = {
-        user_id: localStorage.getItem('_BBNAME'),
-        title: this.title,
-        desc: this.desc,
-        pics: this.pics,
-        price: this.price,
-        type: this.type,
-        tel: this.tel,
-        freight: this.freight,
-        publishAddr: this.publishAddr,
-        state: 'sale',
-        createTime: this.moment().format('YYYY-MM-DD HH:MM:SS')
-      }
-      publish({
-        data: obj
-      }).then((res) => {
-        if (String(res.status) === String(200)) {
-          this.popDesc = '商品上传成功'
-          this.topPopup = true
-          setTimeout(() => {
-            this.$router.push({ path: '/' })
-            window.location.reload()
-          }, 1500)
-        }
-      })
     },
     cancel () {
       this.$router.push({ path: '/' })
