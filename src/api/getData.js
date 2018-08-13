@@ -32,7 +32,7 @@ export function adminDelete (params) {
 }
 
 // 登录
-export function login (params) {
+export function api_login (params) {
   return axios({
     url: '/users/login',
     data: params.data
@@ -40,7 +40,7 @@ export function login (params) {
 }
 
 // 注册
-export function register (params) {
+export function api_register (params) {
   return axios({
     url: '/users/register',
     data: params.data

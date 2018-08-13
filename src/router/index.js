@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/home/home'
 import Activity from '@/pages/activity/activity'
-// import Login from '@/pages/login'
-// import Register from '@/pages/register'
-// import Publish from '@/pages/publish'
+import GoodEssay from '@/pages/goodEssay/goodEssay'
+import Register from '@/pages/register/register'
+import Share from '@/pages/share/share'
 // import Test from '@/components/test'
 // import OrderDetail from '@/pages/orderDetail'
 // import OrderState from '@/pages/orderState'
@@ -22,11 +22,26 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: '/',
+          name: 'goodEssay',
+          component: GoodEssay
+        }, {
+          path: 'activity',
+          name: 'activity',
+          component: Activity
+        }, {
+          path: 'share',
+          name: 'share',
+          component: Share
+        }
+      ]
     }, {
-      path: '/activity',
-      name: 'activity',
-      component: Activity
+      path: 'register',
+      name: 'register',
+      component: Register
     }
     // {
     //   path: '/admin',
@@ -55,35 +70,5 @@ export default new Router({
     //     }
     //   ]
     // },
-    // {
-    //   path: '/login',
-    //   name: 'login',
-    //   component: Login
-    // },
-    // {
-    //   path: '/register',
-    //   name: 'register',
-    //   component: Register
-    // },
-    // {
-    //   path: '/publish',
-    //   name: 'publish',
-    //   component: Publish
-    // },
-    // {
-    //   path: '/test',
-    //   name: 'test',
-    //   component: Test
-    // },
-    // {
-    //   path: '/orderDetail/:_id',
-    //   name: 'orderDetail',
-    //   component: OrderDetail
-    // },
-    // {
-    //   path: '/orderState/:_id',
-    //   name: 'orderState',
-    //   component: OrderState
-    // }
   ]
 })
