@@ -26,6 +26,7 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-undef': 0,
-    'camelcase': 0
+    'camelcase': 0,
+    'quotes': 0
   }
 }

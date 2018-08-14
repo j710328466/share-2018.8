@@ -1,7 +1,8 @@
 import express from 'express'
-import test from '../controller/test/test'
 const router = express.Router()
 
-router.post('/', test.test)
+router.get('/', (req, res, next) => {
+  res.send('测试页面，别当真！')
+})
 
 export default router

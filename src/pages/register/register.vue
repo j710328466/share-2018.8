@@ -6,14 +6,14 @@
       </mu-snackbar>
       <mu-paper class="cont" :zDepth="2">
         <mu-sub-header class="reg_title">注册账号</mu-sub-header>
-        <mu-content-block>
+        <div>
           <mu-text-field label="账号" hintText="请输入账号" v-model="userName" type="text" labelFloat/><br/>
           <!-- :errorText="inputErrorRepwd" @textOverflow="handleRepwdOverflow" 密码提示 -->
           <mu-text-field label="密码" hintText="请输入密码" v-model="password" :maxLength="12" type="password" labelFloat/><br/>
           <mu-text-field label="再次输入密码" hintText="请输入密码" v-model="password2"  :maxLength="12" type="password" labelFloat/><br/>
           <mu-text-field label="手机号" hintText="请输入手机号" v-model="tel" type="text" labelFloat/><br/>
           <mu-button class="mb_20" slot="actions" color="secondary" @click="register">注册</mu-button>
-        </mu-content-block>
+        </div>
       </mu-paper>
     </div>
 </template>

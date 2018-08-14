@@ -5,15 +5,6 @@ import Activity from '@/pages/activity/activity'
 import GoodEssay from '@/pages/goodEssay/goodEssay'
 import Register from '@/pages/register/register'
 import Share from '@/pages/share/share'
-// import Test from '@/components/test'
-// import OrderDetail from '@/pages/orderDetail'
-// import OrderState from '@/pages/orderState'
-// import Admin from '@/pages/admin'
-// import AdminMenage from '@/pages/adminMenage'
-// import UserMenage from '@/pages/userMenage'
-// import Banner from '@/pages/banner'
-// import OrderMenage from '@/pages/orderMenage'
-// import GoodManage from '@/pages/goodMenage'
 
 Vue.use(Router)
 
@@ -21,7 +12,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      // name: 'home',
       component: Home,
       children: [
         {
@@ -36,39 +27,12 @@ export default new Router({
           path: 'share',
           name: 'share',
           component: Share
+        }, {
+          path: '/register',
+          name: 'register',
+          component: Register
         }
       ]
-    }, {
-      path: 'register',
-      name: 'register',
-      component: Register
     }
-    // {
-    //   path: '/admin',
-    //   name: 'admin',
-    //   component: Admin,
-    //   children: [
-    //     {
-    //       path: '/adminMenage',
-    //       component: AdminMenage
-    //     },
-    //     {
-    //       path: '/userMenage',
-    //       component: UserMenage
-    //     },
-    //     {
-    //       path: '/orderMenage',
-    //       component: OrderMenage
-    //     },
-    //     {
-    //       path: '/goodMenage',
-    //       component: GoodManage
-    //     },
-    //     {
-    //       path: '/banner',
-    //       component: Banner
-    //     }
-    //   ]
-    // },
   ]
 })

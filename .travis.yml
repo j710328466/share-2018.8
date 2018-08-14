@@ -28,9 +28,8 @@ after_script:
   - git commit -m "自动构建页面"
   - git push --force --quiet "https://${test_token}@${GH_REF}" master:${P_BRANCH}
 # E: Build LifeCycle
-
 notifications:
-   webhooks: https://oapi.dingtalk.com/robot/send?access_token=9d6598dd72893735651b93578d74240c3528f77d37d49e4e3090f28c036e5ea6
+   webhooks: https://oapi.dingtalk.com/robot/send?access_token=b029171e000e45aa80589d398b10131ef01dfd91400ac00973cbfbfc6bf7da24
 
 branches:
   only:

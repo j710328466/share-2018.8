@@ -1,10 +1,15 @@
 <template>
   <div class="layout">
+    <!-- 提示框 -->
+    <mu-snackbar :position="snackbar.position" :open.sync="snackbar.open">
+      {{snackbar.message}}
+      <mu-button flat slot="action" color="secondary" @click="snackbar.open = false">关闭</mu-button>
+    </mu-snackbar>
     <!-- 登录框 -->
     <mu-dialog title="登录" width="360" :open.sync="loginOpened" max-width="80%" :esc-press-close="false" :overlay-close="false">
       <mu-text-field v-model="userName" label="账号" label-float></mu-text-field><br/>
-      <mu-text-field v-model="password" label="密码" label-float></mu-text-field><br/>
-      <mu-button class="mr_10" slot="actions" flat to="register" >注册</mu-button>
+      <mu-text-field v-model="password" label="密码" type="password" label-float></mu-text-field><br/>
+      <mu-button class="mr_10" slot="actions" flat @click="register" >注册</mu-button>
       <mu-button slot="actions" color="primary" @click="login">登录</mu-button>
       <mu-button slot="actions" color="primary" @click="closeLogin">取消</mu-button>
     </mu-dialog>
@@ -12,9 +17,9 @@
     <mu-appbar class="header" color="primary">
       <router-link to="/register" slot="left" class="logo" flat>Jimi Club</router-link>
       <mu-tabs class="tabs" :value.sync="active" slot="right" @change="tabChange" indicator-color="#fff">
-        <mu-tab>精美文章</mu-tab>
+        <mu-tab>美文</mu-tab>
         <mu-tab>活动</mu-tab>
-        <mu-tab>分享会</mu-tab>
+        <mu-tab>分享</mu-tab>
       </mu-tabs>
       <mu-button flat slot="right" @click="openMyPlace">我的</mu-button>
     </mu-appbar>
@@ -27,11 +32,14 @@
     <!-- 个人中心 -->
     <mu-drawer :open.sync="myPlaceOpen" :docked="false">
       <mu-list>
-        <mu-list-item nested-list-class="mydrawer" button @click="openLoginDialog">
+        <mu-list-item nested-list-class="mydrawer" button @click="openLoginDialog" v-if="!JCN">
           <mu-list-item-title>登录</mu-list-item-title>
         </mu-list-item>
-        <mu-list-item  @click="openMyPlace" button>
-          <mu-list-item-title>关闭</mu-list-item-title>
+        <mu-list-item nested-list-class="mydrawer" button v-else>
+          <mu-list-item-title>{{JCN}}, 你好~</mu-list-item-title>
+        </mu-list-item>
+        <mu-list-item  @click="loginOut" button v-if="JCN">
+          <mu-list-item-title>退出账号</mu-list-item-title>
         </mu-list-item>
       </mu-list>
     </mu-drawer>
@@ -44,12 +52,18 @@ export default {
   name: 'home',
   data () {
     return {
+      JCN: localStorage.getItem('JCN'),
       userName: '',
       password: '',
       active: 0,
       myPlaceOpen: false,
       loginOpened: false,
-      docked: true
+      docked: true,
+      snackbar: {
+        position: 'top',
+        open: false,
+        message: ''
+      }
     }
   },
   beforeRouteLeave (to, from, next) {
@@ -75,7 +89,6 @@ export default {
       this.loginOpened = true
     },
     register () {
-      this.$router.redirect({ path: '/register' })
     },
     login () {
       api_login({
@@ -85,11 +98,24 @@ export default {
         }
       }).then(res => {
         // let data = res.data
-        console.log(res)
+        if (res.code === 200) {
+          localStorage.setItem('JCN', res.data.userName)
+          this.snackbar.open = true
+          this.snackbar.message = '登录成功！'
+          setTimeout(() => {
+            this.loginOpened = false
+            this.snackbar.open = false
+            window.location.reload()
+          }, 1000)
+        }
       })
     },
     closeLogin () {
       this.loginOpened = false
+    },
+    loginOut () {
+      localStorage.removeItem('JCN')
+      window.location.reload()
     }
   },
   watch: {

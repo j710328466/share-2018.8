@@ -5,15 +5,16 @@ class User {
     登录
   */
   login (req, res, next) {
-    userModel.findOne(req.body)
-      .then(result => {
-        if (result == null) {
-          res.end(JSON.stringify({code: 1001, message: '账号不存在'}))
-        } else {
-          // console.log('登录成功')
-          res.end(JSON.stringify(result))
-        }
-      })
+    userModel.findOne({
+      "data.userName": req.body.userName
+    }).then(result => {
+      if (result == null) {
+        res.end(JSON.stringify({code: 1001, message: '账号不存在'}))
+      } else {
+        // console.log('登录成功')
+        res.end(JSON.stringify(result))
+      }
+    })
   }
 
   /*

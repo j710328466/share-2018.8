@@ -13,7 +13,7 @@ export default app => {
   // 管理员
   // app.use('/admin', admin)
   // 测试
-  // app.use('/test', test)
+  app.use('/test', test)
   // // 用户
   app.use('/users', users)
   // // 商品
