@@ -5,15 +5,11 @@ import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import chalk from 'chalk'
-import https from 'https'
-import fs from 'fs'
+import http from 'http'
 
 const config = require('config-lite')(__dirname)
 const app = express()
-var httpsServer = https.createServer({
-  key: fs.readFileSync('./lib/privatekey.pem', 'utf8'),
-  cert: fs.readFileSync('./lib/certificate.crt', 'utf8')
-}, app)
+var server = http.Server(app)
 
 app.all('*', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', req.headers.origin || '*')
@@ -48,7 +44,7 @@ app.use(session({
 
 router(app)
 
-httpsServer.listen(config.port, () => {
+server.listen(config.port, () => {
   console.log(
     chalk.green('this app is running at port:' + config.port)
   )
