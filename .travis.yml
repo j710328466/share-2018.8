@@ -1,6 +1,6 @@
 language: node_js
 # nodejs版本
-node_js: 
+node_js:
     - '8.9.1'
 
 # Travis-CI Caching
@@ -29,7 +29,7 @@ after_script:
   - git push --force --quiet "https://${test_token}@${GH_REF}" master:${P_BRANCH}
 # E: Build LifeCycle
 notifications:
-   webhooks: https://oapi.dingtalk.com/robot/send?access_token=b029171e000e45aa80589d398b10131ef01dfd91400ac00973cbfbfc6bf7da24
+  #  webhooks: https://oapi.dingtalk.com/robot/send?access_token=b029171e000e45aa80589d398b10131ef01dfd91400ac00973cbfbfc6bf7da24
 
 branches:
   only:
